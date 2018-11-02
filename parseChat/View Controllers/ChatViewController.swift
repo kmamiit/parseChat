@@ -25,12 +25,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
+//        messagesTableView.rowHeight = 150
         messagesTableView.rowHeight = UITableViewAutomaticDimension
-        messagesTableView.estimatedRowHeight = 50
+        messagesTableView.estimatedRowHeight = 150
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(ChatViewController.didPullToRefresh(_:)), for: .valueChanged)
         messagesTableView.insertSubview(refreshControl, at: 0)
+        
+        messagesTableView.separatorStyle = .none
+        
         
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
     }
